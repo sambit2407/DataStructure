@@ -1,4 +1,4 @@
-"""adding element in between the node  of the linkedList(After Any Node) :
+"""adding element in between the node  of the linkedList(Before any Node) :
          1. Finding X (after which node).
          2. Take the particular(X) node reference save in the new_node reference.
          3.Then what even the new_node added we have to save in the X reference.
@@ -78,9 +78,41 @@ class LinkedList:
             new_node.ref=n.ref
             n.ref=new_node
 
+    def adding_before_node(self,data,x):
+        """checking if LinkedList is empty"""
+        n=self.head
+        if n is None:
+            print('LinkedList is Empty !!')
+            return
+        """checking adding before first Node"""
+        if n.data==x:
+            self.adding_element_at_begining(data)
+        """Finding out till the last Node"""
+        while n.ref is not None:
+            """Finding out the previous Node---As n.ref.data >>n is current node who has next node reference and by 
+            that we are accessing the data """
+            if n.ref.data==x:
+                break
+            n=n.ref
+        """Here we got the previous node as n"""
+        if n.ref is None:
+            print('Data not found in LinkedList')
+
+            """After getting the previous node we just have to add after the previous node"""
+        else:
+            """Creating the new node"""
+            new_node = Node(data)
+            """taking reference of the new node from the previous node as we are adding after the previous node"""
+            new_node.ref = n.ref
+            """setting the previous node reference as new node"""
+            n.ref = new_node
+
+
+
+
 ll=LinkedList()
 ll.adding_element_at_begining(21)
 ll.adding_element_at_begining(19)
-ll.adding_after_the_node(20,19)
-
+ll.adding_element_at_begining(15)
+ll.adding_before_node(30,21)
 ll.print_LinkedList()
