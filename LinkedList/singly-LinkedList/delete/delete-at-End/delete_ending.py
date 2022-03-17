@@ -128,7 +128,18 @@ class LinkedList:
             """Then i have assigned the reference of first first Node to head"""
             self.head = n.ref
 
-
+    def delete_at_end(self):
+        if self.head is None:
+            print('LinkedList is empty!!')
+        else:
+            """Taking the first Node as assigning head as n"""
+            n = self.head
+            """n.ref.ref means checking the next node ref is none or not"""
+            while n.ref.ref is not None:
+                """going to the next Node"""
+                n = n.ref
+            """then after getting previous node i deleted the reference of the next node to delete the last node"""
+            n.ref=None
 
 
 ll = LinkedList()
